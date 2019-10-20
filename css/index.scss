@@ -1,0 +1,38 @@
+@import 'core';
+
+aside {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 3fr;
+
+    &>div {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+#strips {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+#console {
+    background-color: black;
+
+    input {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 25%;
+        background-color: rgba(255, 255, 255, 0.4);
+        font-size: 1em;
+        border: none;
+        border-top: 2px solid #555;
+        color: white;
+    }
+}
