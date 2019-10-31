@@ -18,6 +18,8 @@
             <input type="text" id="cmd" placeholder="...">
         </div>
     </aside>
+    <script src="js/utils.js"></script>
+
     <script src="js/models/Runway.js"></script>
     <script src="js/models/Airport.js"></script>
 
@@ -29,6 +31,8 @@
         let airport, aircraft;
 
         let ticker;
+        
+        let communicationHandler;
 
         window.onload = () => {
             canvas = document.getElementsByTagName('canvas')[0];
@@ -36,15 +40,23 @@
 
             sizeCanvas();
 
+            ctx.fillStyle = "#0e3526";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
             window.onresize = () => {
                 sizeCanvas();
+            }
+
+            gebid('cmd').onkeydown = e => {
+                if (e.which == 13) {
+                    submitCommand(gebid('cmd').value);
+                    gebid('cmd').value = '';
+                }
             }
 
             airport = new Airport();
             aircraft = [];
             aircraft.push(new Aircraft("cessna"));
-
-            console.log(aircraft);
 
             start(1000);
         }
@@ -54,7 +66,7 @@
             canvas.style.height = '100%';
 
             canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offestHeight;
+            canvas.height = canvas.offsetHeight;
         }
     </script>
 </body>
